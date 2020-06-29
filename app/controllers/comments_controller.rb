@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
     @post.comments.create(comment_params)
 
     respond_to do |format|
-      if @comment.save
+      if @comment
         format.html { redirect_to post_path(@post), notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else

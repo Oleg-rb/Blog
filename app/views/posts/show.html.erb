@@ -31,3 +31,11 @@
     </p>
   <% end %>
 </p>
+
+<h2>Comments</h2>
+
+<% @post.comments.each do |comment| %>
+  <p>
+    <%= comment.body %>
+  </p>
+<% end %>
