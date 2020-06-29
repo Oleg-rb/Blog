@@ -36,6 +36,7 @@
 
 <% @post.comments.each do |comment| %>
   <p>
+    <%= current_user.username %>
     <%= comment.body %>
   </p>
 <% end %>
