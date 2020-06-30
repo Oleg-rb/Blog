@@ -37,30 +37,30 @@
 |
 <%= link_to 'Удалить', post_path(@post), method: :delete, data: { confirm: 'Вы уверены?'} %>
 |
-<%= link_to 'Назад', posts_path %>
+<%= link_to 'Назад', posts_path %> -->
 
-<h2>Add comments</h2>
+<h4>Add comments</h4>
 
 <p>
   <%= form_for([@post, @post.comments.build]) do |f| %>
-    <p>
-      <%= f.text_area :body %>
-    </p>
-
-    <p>
-      <%= f.submit %>
-    </p>
+    <div class="form_group">
+      <%= f.text_area :body, class: 'form-control' %>
+    </div>
+    <br />
+    <div class="form_group">
+      <%= f.submit "Сохранить", class: "btn btn-primary" %>
+      <%= link_to 'Назад', :back, class: "btn btn-outline-secondary" %>
+    </div>
   <% end %>
 </p>
 
-<h2>Comments</h2>
+<h4>Comments</h4>
 
 <% @post.comments.each do |comment| %>
   <% if comment.body %>
     <p>
-      <%= current_user.username %>
+      <h6><%= current_user.username %></h6>
       <%= comment.body %>
     </p>
   <% end %>
 <% end %>
- -->

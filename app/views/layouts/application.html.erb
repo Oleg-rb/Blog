@@ -30,21 +30,29 @@
           <div class="navbar-header">
             <a class="navbar-brand bg-primary" href="#">Контакты</a>
           </div>
+
+          <div class="navbar-header">
+            <% if user_signed_in? %>
+              <a class="navbar-brand bg-primary" data-method="delete" href="<%= destroy_user_session_path %>">Выйти</a>
+            <% else %>
+              <a class="navbar-brand bg-primary" href="<%= new_user_session_path %>">Войти</a>
+            <% end %>
+          </div>
         </ul>
 
         <%= link_to 'Новая статья', new_post_path, class: 'navbar-brand pull-xs-right bg-primary' %>
       </nav>
-      
-      <% if user_signed_in? %>
-        Hello, <%= current_user.username %> | <%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Войти', new_user_session_path %>
-      <% end %>
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      
       <div class="container main">
+        <div class="row">
+          <div class="col-md-12">
+            <% flash.each do |name, message| %>
+              <div class="alert alert-<%= name %>">
+                <%= message %>
+              </div>
+            <% end %>
+          </div>
+        </div>
         <%= yield %>
       </div>
     </div>
