@@ -35,8 +35,10 @@
 <h2>Comments</h2>
 
 <% @post.comments.each do |comment| %>
-  <p>
-    <%= current_user.username %>
-    <%= comment.body %>
-  </p>
+  <% if comment.body %>
+    <p>
+      <%= current_user.username %>
+      <%= comment.body %>
+    </p>
+  <% end %>
 <% end %>
