@@ -20,16 +20,33 @@
   </head>
 
   <body>
+    <div class="container">
+      <nav class="navbar navbar-dark bg-primary">
+        <ul class="nav">
+          <div class="navbar-header">
+            <a class="navbar-brand bg-primary" href="<%= posts_path %>">Статьи</a>
+          </div>
 
-    <% if user_signed_in? %>
-      Hello, <%= current_user.username %> | <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign In', new_user_session_path %>
-    <% end %>
+          <div class="navbar-header">
+            <a class="navbar-brand bg-primary" href="#">Контакты</a>
+          </div>
+        </ul>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    
-    <%= yield %>
+        <%= link_to 'Новая статья', new_post_path, class: 'navbar-brand pull-xs-right bg-primary' %>
+      </nav>
+      
+      <% if user_signed_in? %>
+        Hello, <%= current_user.username %> | <%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Войти', new_user_session_path %>
+      <% end %>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      
+      <div class="container main">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
